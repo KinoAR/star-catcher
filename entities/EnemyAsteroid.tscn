@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://scripts/enemyAsteroid.gd" type="Script" id=1]
+[ext_resource path="res://assets/actors/enemy-square.png" type="Texture" id=2]
+
+[sub_resource type="RectangleShape2D" id=1]
+extents = Vector2( 34, 34 )
+
+[node name="EnemyAsteroid" type="KinematicBody2D"]
+collision_layer = 2
+script = ExtResource( 1 )
+speed = 270
+
+[node name="Sprite" type="Sprite" parent="."]
+scale = Vector2( 0.25, 0.25 )
+texture = ExtResource( 2 )
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource( 1 )
