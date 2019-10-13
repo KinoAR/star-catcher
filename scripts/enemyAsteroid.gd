@@ -23,7 +23,6 @@ func process_movement(delta:float)->void:
 	pass
 
 func outside_viewport_on_left(position:Vector2)->bool:
-	var size:Vector2 = get_viewport().size
 	if position.x < -32:
 		return true
 	else:

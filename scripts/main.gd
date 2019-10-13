@@ -1,6 +1,7 @@
 extends Node2D
 
-export var frame_count:int=45
+export var asteroid_frame_count:int=45
+export var star_frame_count:int=30
 var rng:RandomNumberGenerator = RandomNumberGenerator.new()
 var asteroid:PackedScene = preload("res://entities/EnemyAsteroid.tscn")
 var star:PackedScene = preload("res://entities/Star.tscn")
@@ -11,9 +12,13 @@ func _ready()->void:
 
 
 func _process(delta)->void:
-	if get_tree().get_frame() % frame_count == 0:
+	var frames = get_tree().get_frame()
+	if frames % asteroid_frame_count == 0:
 		print("Added asteroid")
 		spawn_asteroid()
+	if frames % star_frame_count == 0:
+		print("Added Star")
+		spawn_star()
 	pass
 
 func spawn_asteroid()->void:
@@ -26,4 +31,10 @@ func spawn_asteroid()->void:
 	new_asteroid.position.y = rng.randi_range(0, size.y)
 
 func spawn_star()->void:
+	var new_star:= star.instance()
+	var size:Vector2 = get_viewport().size
+	add_child(new_star)
+	randomize()
+	new_star.position.x = size.x + 35
+	new_star.position.y = rng.randi_range(0, size.y)
 	pass
