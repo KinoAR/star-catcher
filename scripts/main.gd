@@ -3,6 +3,7 @@ extends Node2D
 export var frame_count:int=45
 var rng:RandomNumberGenerator = RandomNumberGenerator.new()
 var asteroid:PackedScene = preload("res://entities/EnemyAsteroid.tscn")
+var star:PackedScene = preload("res://entities/Star.tscn")
 
 func _ready()->void:
 
@@ -23,3 +24,6 @@ func spawn_asteroid()->void:
 	randomize()
 	new_asteroid.position.x = size.x + rectangleShape.extents.x
 	new_asteroid.position.y = rng.randi_range(0, size.y)
+
+func spawn_star()->void:
+	pass
